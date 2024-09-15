@@ -54,7 +54,7 @@ public sealed class PersonalInfo9SV(Memory<byte> Raw) : PersonalInfo, IPersonalA
     public ushort RegionalFormIndex { get => (byte)ReadUInt16LittleEndian(Data[0x2A..]); set => WriteUInt16LittleEndian(Data[0x2A..], value); }
 
     public override int EscapeRate { get => 0; set { } }
-    public override int BaseEXP { get => 0; set { } }
+    public override int BaseEXP { get => ReadUInt16LittleEndian(Data[0x22..]); set => WriteUInt16LittleEndian(Data[0x22..], (ushort)value); }
 
     /// <summary>
     /// Gets the Form that any offspring will hatch with, assuming it is holding an Everstone.
